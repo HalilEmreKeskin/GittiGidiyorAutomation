@@ -33,15 +33,5 @@ public class NewTapAndLogout extends LoginPage {
         TimeUnit.SECONDS.sleep(4);
         driver.quit();
 
-
-
-
-
-        /*
-        String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,"t");
-        String newTap = Keys.chord(Keys.CONTROL,"t");
-        TimeUnit.SECONDS.sleep(3);
-        driver.findElement(By.linkText("https://www.gittigidiyor.com/")).sendKeys(selectLinkOpeninNewTab);
-       */
     }
 }

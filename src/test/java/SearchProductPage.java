@@ -16,15 +16,11 @@ public class SearchProductPage extends LoginPage{
     public SearchProductPage(WebDriver driver) {
         super(driver);
     }
+
     public void search() throws InterruptedException {
         driver.findElement(By.name("k")).click();
         driver.findElement(By.name("k")).sendKeys("Kitap"+ Keys.ENTER);
-        Random random = new Random();
-        for (int a=0; a<=3;a++) {
-            int x = random.nextInt(30);
-            driver.findElements(By.name("like")).get(x).click();
-            TimeUnit.SECONDS.sleep(3);
-        }
+        randomNumber();
         basePage = new BasePage(driver);
         basePage.scrollTo(0, 100000);
     }

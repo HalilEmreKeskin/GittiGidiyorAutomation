@@ -1,9 +1,12 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.logging.Logger;
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestPage extends BaseTest{
 
     LoginPage loginPage;
@@ -13,6 +16,7 @@ public class TestPage extends BaseTest{
 
     final static Logger logger = Logger.getLogger(String.valueOf(TestPage.class));
 
+    @Order(1)
     @Test
     public void loginTest(){
         logger.info(" Login Test başlatıldı.");
@@ -21,6 +25,8 @@ public class TestPage extends BaseTest{
         Assert.assertTrue("Login Başarısız",loginPage.checkIfLoginSuccess());
         logger.info(" Login Test başarılı.");
     }
+
+    @Order(2)
     @Test
     public void loginAndRandomSearch() throws InterruptedException {
         logger.info(" Login Ve Arama Test başlatıldı.");
@@ -32,6 +38,7 @@ public class TestPage extends BaseTest{
 
     }
 
+    @Order(3)
     @Test
     public void bagSearchAndAdd() throws InterruptedException {
         logger.info(" Arama Test başlatıldı.");
@@ -42,6 +49,8 @@ public class TestPage extends BaseTest{
         logger.info(" Arama işlemi başarılı.");
 
     }
+
+    @Order(4)
     @Test
     public void deleteFavorite() throws InterruptedException {
         logger.info(" Silme Testi başlatıldı.");
@@ -50,6 +59,9 @@ public class TestPage extends BaseTest{
         Assert.assertTrue("Product not deleted",favoritePage.checkIfProductDeleted());
         logger.info(" silme işlemi başarılı.");
     }
+
+
+    @Order(5)
     @Test
     public void newTapAndLogoutTest() throws InterruptedException {
         logger.info(" NewTap Testi başlatıldı.");
