@@ -3,7 +3,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -20,9 +19,11 @@ public class SearchProductPage extends LoginPage{
     public void search() throws InterruptedException {
         driver.findElement(By.name("k")).click();
         driver.findElement(By.name("k")).sendKeys("Kitap"+ Keys.ENTER);
-        randomNumber();
         basePage = new BasePage(driver);
-        basePage.scrollTo(0, 100000);
+        basePage.scrollTo(0, 1000000);
+        TimeUnit.SECONDS.sleep(3);
+        randomNumber();
+
     }
     public void searchBagAndAddToCart() throws InterruptedException {
 
@@ -55,7 +56,7 @@ public class SearchProductPage extends LoginPage{
         TimeUnit.SECONDS.sleep(2);
 
         //favoriden seç
-        driver.findElement(By.cssSelector("a[class='gg-ui-btn-default btn-add-to-basket']")).click();
+        driver.findElements(By.cssSelector("a[class='gg-ui-btn-default btn-add-to-basket']")).get(2).click();
     }
     public boolean checkIfProductAdd() {
         return getProducts().size() >0;
@@ -68,9 +69,9 @@ public class SearchProductPage extends LoginPage{
     public void randomNumber() throws InterruptedException {
         Random random = new Random();
         for (int a=0; a<=3;a++) {
-            int x = random.nextInt(30);
-            driver.findElements(By.name("like")).get(x).click();
-            TimeUnit.SECONDS.sleep(3);
+            int x = random.nextInt(31);
+            driver.findElements(By.cssSelector("div[class='ndodpt-1 bgCibU sc-1n49x8z-13 ceCTui']")).get(x).click();
+            TimeUnit.SECONDS.sleep(4);
         }
 
     }

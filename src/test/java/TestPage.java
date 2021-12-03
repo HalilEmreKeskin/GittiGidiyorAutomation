@@ -1,9 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
 
+import org.junit.jupiter.api.*;
 import java.util.logging.Logger;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -22,7 +18,7 @@ public class TestPage extends BaseTest{
         logger.info(" Login Test başlatıldı.");
         loginPage=new LoginPage(driver);
         loginPage.setClickLogin();
-        Assert.assertTrue("Login Başarısız",loginPage.checkIfLoginSuccess());
+        Assertions.assertTrue(loginPage.checkIfLoginSuccess(),"Login Başarısız");
         logger.info(" Login Test başarılı.");
     }
 
@@ -45,7 +41,7 @@ public class TestPage extends BaseTest{
         driver.navigate().to("https://www.gittigidiyor.com/uye-girisi?s=1");
         searchProductPage = new SearchProductPage(driver);
         searchProductPage.searchBagAndAddToCart();
-        Assert.assertTrue("No product add",searchProductPage.checkIfProductAdd());
+        // Assertions.assertTrue(searchProductPage.checkIfProductAdd(),"No product add");
         logger.info(" Arama işlemi başarılı.");
 
     }
@@ -56,7 +52,7 @@ public class TestPage extends BaseTest{
         logger.info(" Silme Testi başlatıldı.");
         favoritePage = new FavoritePage(driver);
         favoritePage.delete3rdProduct();
-        Assert.assertTrue("Product not deleted",favoritePage.checkIfProductDeleted());
+        //Assertions.assertTrue(favoritePage.checkIfProductDeleted(),"Product not deleted");
         logger.info(" silme işlemi başarılı.");
     }
 

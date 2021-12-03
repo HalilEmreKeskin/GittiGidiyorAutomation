@@ -29,7 +29,7 @@ public class NewTapAndLogout extends LoginPage {
 
         TimeUnit.SECONDS.sleep(3);
         driver.close();
-        driver.navigate().refresh();
+
         TimeUnit.SECONDS.sleep(4);
         driver.quit();
 
